@@ -20,8 +20,8 @@ collections:
         name: 'author',
         widget: 'relation',
         collection: 'authors',
-        searchFields: ['name.first'],
-        valueField: 'name.first'
+        searchFields: ['name'],
+        valueField: 'name'
       }
       - { label: 'Publish Date', name: 'date', widget: 'datetime' }
       - {
@@ -40,12 +40,7 @@ collections:
     folder: content/author
     create: true
     fields:
-      - label: 'Name'
-        name: 'name'
-        widget: 'string'
-        fields:
-          - { label: 'Firstname', name: 'first', widget: 'string' }
-          - { label: 'Lastname', name: 'last', widget: 'string' }
+      - { label: 'Name', name: 'name', widget: 'string'}
       - { label: 'Short Description', name: 'short_desc', widget: 'string' }
       - { label: 'Bio', name: 'bio', widget: 'markdown' }
       - { label: 'Image', name: 'thumbnail', widget: 'image' }
