@@ -6,18 +6,34 @@ backend:
 media_folder: static/assets
 public_folder: assets
 publish_mode: editorial_workflow
+site_url: https://gatsby-advanced-starter-atchett.netlify.com
 
 collections:
   - name: blog
     label: 'Post'
-    folder: 'content'
+    folder: 'content/posts'
     create: true
     slug: '{{year}}-{{month}}-{{day}}-{{slug}}.md'
     fields:
       - { label: 'Title', name: 'title', widget: 'string' }
       - { label: 'Publish Date', name: 'date', widget: 'datetime' }
-      - { label: 'Cover Image', name: 'cover', widget: 'image' }
+      - {
+          label: 'Cover Image',
+          name: 'cover',
+          widget: 'image',
+          required: false,
+        }
       - { label: 'Slug', name: 'slug', widget: 'string' }
       - { label: 'Category', name: 'category', widget: 'string' }
       - { label: 'Tags', name: 'tags', widget: 'list' }
       - { label: 'Body', name: 'body', widget: 'markdown' }
+  - name: author
+    identifier_field: name
+    label: 'Author'
+    folder: content/author
+    create: true
+    fields:
+      - { label: 'Name', name: 'name', widget: 'string' }
+      - { label: 'Short Description', name: 'short_desc', widget: 'string' }
+      - { label: 'Bio', name: 'bio', widget: 'markdown' }
+      - { label: 'Image', name: 'thumbnail', widget: 'image' }
