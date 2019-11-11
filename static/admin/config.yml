@@ -16,24 +16,36 @@ collections:
     slug: '{{year}}-{{month}}-{{day}}-{{slug}}.md'
     fields:
       - { label: 'Title', name: 'title', widget: 'string' }
+      - {label: 'Post Author',
+        name: 'author',
+        widget: 'relation',
+        collection: 'authors',
+        searchFields: ['name.first'],
+        valueField: 'name.first'
+      }
       - { label: 'Publish Date', name: 'date', widget: 'datetime' }
       - {
           label: 'Cover Image',
           name: 'cover',
           widget: 'image',
-          required: false,
+          required: false
         }
       - { label: 'Slug', name: 'slug', widget: 'string' }
       - { label: 'Category', name: 'category', widget: 'string' }
       - { label: 'Tags', name: 'tags', widget: 'list' }
       - { label: 'Body', name: 'body', widget: 'markdown' }
-  - name: author
+  - name: authors
     identifier_field: name
     label: 'Author'
     folder: content/author
     create: true
     fields:
-      - { label: 'Name', name: 'name', widget: 'string' }
+      - label: 'Name'
+        name: 'name'
+        widget: 'string'
+        fields:
+          - { label: 'Firstname', name: 'first', widget: 'string' }
+          - { label: 'Lastname', name: 'last', widget: 'string' }
       - { label: 'Short Description', name: 'short_desc', widget: 'string' }
       - { label: 'Bio', name: 'bio', widget: 'markdown' }
       - { label: 'Image', name: 'thumbnail', widget: 'image' }
